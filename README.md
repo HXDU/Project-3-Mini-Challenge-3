@@ -47,12 +47,12 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 ## Team Contributions
 ### H Du
-Pre-processing: filtering, and how conditions will be characterized,Ranking of districts, population
-
-Creating the stream of data from .csv files to the web app
+- Pre-processing: filtering, and how conditions will be characterized,Ranking of districts, population
+- Creating the stream of data from .csv files to the web app
 ### N Gomez
-Create resources allocation algorithms, using distance between districs, and determining road crews, sewer repair crews, power, and rescue teams, helping with secondary resource graph
+- Make the readme
+- Create resources allocation algorithms, using distance between districs, and determining road crews, sewer repair crews, power, and rescue teams, helping with secondary resource graph
 ### J. Willgrubs
-UI: Create map outline, district transition functions, secondary resource graph
+- UI: Create map outline, district transition functions, secondary resource graph
 
 
