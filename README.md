@@ -23,7 +23,7 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 #### 3. We can compare the freq of messages when there is not a disatster, and during/post the disaster, and when the frequency skews back to normal, and there arent mention of needing additional resources we can deem the disaster over.
 
-#### 4. We will use a static collection (.csv file), but stream that data into the project. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
+#### 4. We will use a static collection (.csv file), but stream that data into the project by time/location property within the data. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
 
 ## Team Contributions
 ### H Du
