@@ -32,7 +32,8 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
       - Take advantheeseage of theesehese One, theeserembling sales!
 
 
-## Our Plan
+## Our Plan  
+  To distinguish reliable information source and unreliable source: Mannually labeling, then apply a classifier to do the rest. Such as: SVM or Naive Bayes. 
   1. We will characterize conditions by sentiment within the messages, as well as the location. The resources will be recomended by sentiment (negative is worse, positive is good) and the population density of the area. We will have an internal ranking of districts, and the higher the ranking, the more resources would be needed as there would be more poeple in need.
 
   2. We will identify the changes in need of resources during the earthquake (normal -> active responders/rescue teams), shortly after (5 hours: repairs, rescue crews), and long after (30 hours: power/electricty). The inflection point will be by time and/or the magnitude of the disaster.
