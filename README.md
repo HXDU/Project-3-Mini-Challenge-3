@@ -33,14 +33,13 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 
 ## Our Plan  
-  To distinguish reliable information source and unreliable source: Mannually labeling, then apply a classifier to do the rest. Such as: SVM or Naive Bayes. 
-  1. We will characterize conditions by sentiment within the messages, as well as the location. The resources will be recomended by sentiment (negative is worse, positive is good) and the population density of the area. We will have an internal ranking of districts, and the higher the ranking, the more resources would be needed as there would be more poeple in need.
+1. First filter out unreliable messages/accoiunts. Then we will characterize conditions by sentiment within the messages, as well as the location. The resources will be recomended by sentiment (negative is worse, positive is good) and the population density of the area. We will have an internal ranking of districts, and the higher the ranking, the more resources would be needed as there would be more poeple in need. (To distinguish reliable information source and unreliable source: Mannually labeling, then apply a classifier to do the rest. Such as: SVM or Naive Bayes. )
 
-  2. We will identify the changes in need of resources during the earthquake (normal -> active responders/rescue teams), shortly after (5 hours: repairs, rescue crews), and long after (30 hours: power/electricty). The inflection point will be by time and/or the magnitude of the disaster.
+2. We will identify the changes in need of resources during the earthquake (normal -> active responders/rescue teams), shortly after (5 hours: repairs, rescue crews), and long after (30 hours: power/electricty). The inflection point will be by time and/or the magnitude of the disaster.
 
-  3. We can compare the freq of messages when there is not a disatster, and during/post the disaster, and when the frequency skews back to normal, and there arent mention of needing additional resources we can deem the disaster over.
+3. We can compare the freq of messages when there is not a disatster, and during/post the disaster, and when the frequency skews back to normal, and there arent mention of needing additional resources we can deem the disaster over.
 
-  4. We will use a static collection (.csv file), but stream that data into the project by time/location property within the data. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
+4. We will use a static collection (.csv file), but stream that data into the project by time/location property within the data. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
 
 ## The Map
 #### Redirecting resources would also have to take into account the proximity from one neighborhood to another. We would have to determine where the resources would come from to save travel time in the real world
@@ -48,8 +47,12 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 ## Team Contributions
 ### H Du
-1/3 of everything
-### J. Willgrubs
-1/3 of everything
+Pre-processing: filtering, and how conditions will be characterized,Ranking of districts, population
+
+Creating the stream of data from .csv files to the web app
 ### N Gomez
-1/3 of everything
+Create resources allocation algorithms, using distance between districs, and determining road crews, sewer repair crews, power, and rescue teams, helping with secondary resource graph
+### J. Willgrubs
+UI: Create map outline, district transition functions, secondary resource graph
+
+
