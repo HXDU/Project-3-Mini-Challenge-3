@@ -14,16 +14,27 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 4. The data for this challenge can be analyzed either as a static collection or as a dynamic stream of data, as it would occur in a real emergency. Describe how you analyzed the data - as a static collection or a stream. How do you think this choice affected your analysis? Limit your response to 200 words and 3 images.
 
+## The Data
+  - 41942 Rows
+  - 4 Columns
+    - time (date/time the message was posted)
+    - location (Which neighborhood the message was posted from)
+    - account (user handle of the person who posted the message)
+    - message (The message itself)
+
+
 ## Our Plan
 
 #### 1. We will characterize conditions by sentiment within the messages, as well as the location. The resources will be recomended by sentiment (negative is worse, positive is good) and the population density of the area. We will have an internal ranking of districts, and the higher the ranking, the more resources would be needed as there would be more poeple in need.
 
 #### 2. We will identify the changes in need of resources during the earthquake (normal -> active responders/rescue teams), shortly after (5 hours: repairs, rescue crews), and long after (30 hours: power/electricty). The inflection point will be by time and/or the magnitude of the disaster.
 
-
 #### 3. We can compare the freq of messages when there is not a disatster, and during/post the disaster, and when the frequency skews back to normal, and there arent mention of needing additional resources we can deem the disaster over.
 
 #### 4. We will use a static collection (.csv file), but stream that data into the project by time/location property within the data. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
+
+#### Map
+![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/map.png)
 
 ## Team Contributions
 ### H Du
