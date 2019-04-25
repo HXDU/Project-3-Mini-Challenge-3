@@ -21,15 +21,15 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
     - location (Which neighborhood the message was posted from)
     - account (user handle of the person who posted the message)
     - message (The message itself)
-#### Example:
-- time	
-  - 4/6/20 0:00
-- location
-  - Weston
-- account	
-  - Opportunities2
-- message
-  - Take advantheeseage of theesehese One, theeserembling sales!
+  - Data entry example
+    - time	
+      - 4/6/20 0:00
+    - location
+      - Weston
+    - account	
+      - Opportunities2
+    - message
+      - Take advantheeseage of theesehese One, theeserembling sales!
 
 
 ## Our Plan
