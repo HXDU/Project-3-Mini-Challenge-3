@@ -41,7 +41,7 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 4. We will use a static collection (.csv file), but stream that data into the project by time/location property within the data. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
 
-## The Map
+## Choropleth Map
 #### Redirecting resources would also have to take into account the proximity from one neighborhood to another. We would have to determine where the resources would come from to save travel time in the real world
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/map_names.png)
 
