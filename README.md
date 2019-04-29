@@ -43,7 +43,8 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 ## File Notes  
 1. SentimentCount.csv  
-To visualize the sentimental changes of published messages over time, we cut the data into multiple 1-hr trunk, then calculate the sentimental score for each hour. This file has the number of messages that are catergrized as positive, negative, and neutral for each hour. 
+To visualize the sentimental changes of published messages over time, we cut the data into multiple 1-hr trunk, then calculate the sentimental score for each hour. This file has the number of messages that are catergrized as positive, negative, and neutral for each hour. A line graph:
+![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/SentimentScore.png)
 
 ## Choropleth Map
 #### Redirecting resources would also have to take into account the proximity from one neighborhood to another. We would have to determine where the resources would come from to save travel time in the real world
