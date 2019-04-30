@@ -42,7 +42,8 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 4. We will use a static collection (.csv file), but stream that data into the project by time/location property within the data. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
 
 ## Files & Solutions  
-1. To identify the time when earthquake happens: via LDA topic model.
+1. To identify the time when earthquake happens: via LDA topic model.  
+![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/topicEarthquake.png)  
 
 2. SentimentCount.csv  
 To visualize the sentimental changes of published messages over time, we cut the data into multiple 1-hr trunk, then calculate the sentimental score for each hour. This file has the number of messages that are catergrized as positive, negative, and neutral for each hour. A line graph:
