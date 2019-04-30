@@ -41,6 +41,20 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 4. We will use a static collection (.csv file), but stream that data into the project by time/location property within the data. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
 
+## Files & Solutions  
+1. EarthquakeKeyWordCount.csv  
+To identify the time when earthquake happens: key word search('quake','earthquake'). This csv file has the number of matched messages for each hour.    
+Given a threshold of 20, we can identify the message peak time is:  
+Apr,6: 2pm-4pm, 7pm-8pm  
+Apr,8: 8am-10am, 1pm-2pm, 7pm-8pm    
+Apr,9: 8am-9am, 3pm-4pm  
+By checking the content, the earthquake happens around 2pm, Apr 6. Or at least the first strike comes at this hour.   
+![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/earthquake_by_mesg_num.png)  
+
+2. SentimentCount.csv  
+To visualize the sentimental changes of published messages over time, we cut the data into multiple 1-hr trunk, then calculate the sentimental score for each hour. This file has the number of messages that are catergrized as positive, negative, and neutral for each hour. A line graph:
+![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/SentimentCount.png)
+
 ## Choropleth Map
 #### Redirecting resources would also have to take into account the proximity from one neighborhood to another. We would have to determine where the resources would come from to save travel time in the real world
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/map_names.png)
