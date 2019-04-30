@@ -47,6 +47,7 @@ Given a threshold of 20, we can identify the message peak time is:
 Apr,6: 2pm-4pm, 7pm-8pm  
 Apr,8: 8am-10am, 1pm-2pm, 7pm-8pm    
 Apr,9: 8am-9am, 3pm-4pm  
+By checking the content, the earthquake happens around 2pm, Apr 6. Or at least the first strike comes at this hour.   
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/earthquake_by_mesg_num.png)  
 
 2. SentimentCount.csv  
