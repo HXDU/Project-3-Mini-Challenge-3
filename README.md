@@ -70,6 +70,13 @@ A line graph of the sentiment count of the whole city:
 - Southton
 #### Emergency Services
 - 34 fire stations 
+#### WATER and SEWER
+Call our Emergency Service department if you need emergency service from the Water Department, including having your water shut off because of a broken pipe, observing a broken fire hydrant, or if your water service is off and you are not sure why.
+##### Current Water and Sewer Projects:
+•	Old Town – old water supply lines are being replaced throughout the neighborhood. We apologize for any inconvenience for this very necessary repair work. 
+•	East Parton – a broken water main is currently being repaired at the intersection of Blair and Quealy.
+•	West Parton – routine maintenance on the sewer lines is ongoing.
+
 #### GAS:
 - If you smell gas, leave the area immediately and call our emergency service number
 #### Garbage
