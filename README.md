@@ -51,8 +51,9 @@ Apr,9: 8am-9am, 3pm-4pm
 By checking the content, the earthquake happens around 2pm, Apr 6. Or at least the first strike comes at this hour.   
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/earthquake_by_mesg_num.png)  
 
-2. SentimentCount.csv  
-To visualize the sentimental changes of published messages over time, we cut the data into multiple 1-hr trunk, then calculate the sentimental score for each hour. This file has the number of messages that are catergrized as positive, negative, and neutral for each hour. A line graph:
+2. SentimentCount.csv & Folder: SentiByHourByLoc  
+To visualize the sentimental changes of published messages over time, we cut the data into multiple 1-hr trunk, then calculate the sentimental score for each hour. This file has the number of messages that are catergrized as positive, negative, and neutral for each hour. Each file in the folder represents one neighborhood, the count is also calculated by hour.  
+A line graph of the sentiment count of the whole city:
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/SentimentCount.png)
 
 ## Choropleth Map
