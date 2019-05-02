@@ -1,4 +1,11 @@
-# Project 3: Mini Challenge #3
+# Project 3: Mini Challenge #3: http://project3.noahgomez.com/
+
+## Team Members:
+- H. Du
+- N. Gomez
+- J. Willgrubs
+
+
 
 ## Summary 
 In disasters, people reach out to friends and family to check in and discuss what they see happening around them. The city and its emergency response teams are hoping to gain an understanding of the issues facing the citizenry they can’t get through seismic readings and survey responses. They are looking to you to help them turn social media posts into an information source helping guide them as to where to focus efforts and what the concerns of the populace are.
@@ -21,15 +28,12 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
     - location (Which neighborhood the message was posted from)
     - account (user handle of the person who posted the message)
     - message (The message itself)
-  - Data entry example
-    - time	
-      - 4/6/20 0:00
-    - location
-      - Weston
-    - account	
-      - Opportunities2
-    - message
-      - Take advantheeseage of theesehese One, theeserembling sales!
+    
+### Example Data Entry
+  
+| Time  | Location           |Account  | Message |
+|:-------------:|:-------------:|:-------------:|:-------------:|
+| 4/6/20 0:00      | Weston |Opportunities2 | Take advantheeseage of theesehese One, theeserembling sales!|
 
 
 ## Our Plan  
@@ -42,16 +46,16 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 4. We will use a static collection (.csv file), but stream that data into the project by time/location property within the data. We won't host all the data in an external database nor stream the data through RESTful API calls. It won't affect our analysis as we are using a hybrid between both.
 
 ## Files & Solutions  
-1. EarthquakeKeyWordCount.csv  
+### 1.EarthquakeKeyWordCount.csv  
 To identify the time when earthquake happens: key word search('quake','earthquake'). This csv file has the number of matched messages for each hour.    
 Given a threshold of 20, we can identify the message peak time is:  
-Apr,6: 2pm-4pm, 7pm-8pm  
-Apr,8: 8am-10am, 1pm-2pm, 7pm-8pm    
-Apr,9: 8am-9am, 3pm-4pm  
-By checking the content, the earthquake happens around 2pm, Apr 6. Or at least the first strike comes at this hour.   
+- Apr,6: 2pm-4pm, 7pm-8pm  
+- Apr,8: 8am-10am, 1pm-2pm, 7pm-8pm    
+- Apr,9: 8am-9am, 3pm-4pm  
+### By checking the content, the earthquake happens around 2pm, Apr 6. Or at least the first strike comes at this hour.   
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/earthquake_by_mesg_num.png)  
 
-2. SentimentCount.csv & Folder: SentiByHourByLoc  
+### 2.SentimentCount.csv & Folder: SentiByHourByLoc  
 To visualize the sentimental changes of published messages over time, we cut the data into multiple 1-hr trunk, then calculate the sentimental score for each hour. This file has the number of messages that are catergrized as positive, negative, and neutral for each hour. Each file in the folder represents one neighborhood, the count is also calculated by hour.  
 A line graph of the sentiment count of the whole city:
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/SentimentCount.png)
@@ -64,7 +68,7 @@ A line graph of the sentiment count of the whole city:
 ### H Du
 - Pre-processing: filtering, and how conditions will be characterized,Ranking of districts, population
 - Creating the stream of data from .csv files to the web app
-### N Gomez
+### N Gomez 
 - Make the readme
 - Create resources allocation algorithms, using distance between districs, and determining road crews, sewer repair crews, power, and rescue teams, helping with secondary resource graph
 ### J. Willgrubs
