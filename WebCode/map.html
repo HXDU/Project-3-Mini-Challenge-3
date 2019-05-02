@@ -18,7 +18,7 @@
                 position: absolute;
                 text-align: center;
                 width: 160px; /*changed width*/
-                height: 160px; /*changed height*/
+                height: 170px; /*changed height*/
                 padding: 2px;
                 font: 12px sans-serif;
                 background: #fff;
@@ -168,11 +168,11 @@
                     //                    .style("left", (d3.event.pageX) + "px")
                     //                    .style("top", (d3.event.pageY - 28) + "px");
 
-                    tooltip.html("<H2 style=' margin-top: 0.1em;margin-bottom: 0;'>" + d.properties.Nbrhood + "</H2>"
+                    tooltip.html("<H2 style=' margin-top: 5px; margin-bottom: -5px;'>" + d.properties.Nbrhood + "</H2>"
                                  + "<br>" + "<b>Details: </b>" 
-                                 + "<br>- Luxury condominiums <br> - Gated housing <br> - Private beaches <br> - Waterfront"
-                                 + "<br>" + "<b>Resources: </b>" 
-                                 + "<br> - Hospital<br> - School")
+                                 + "<br>Luxury condominiums <br>Gated housing <br>Private beaches <br>Waterfront"
+                                 + "<br><br>" + "<b>Buildings: </b>" 
+                                 + "<br>Hospital<br>School")
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");
                 })
