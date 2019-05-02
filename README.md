@@ -60,6 +60,26 @@ To visualize the sentimental changes of published messages over time, we cut the
 A line graph of the sentiment count of the whole city:
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/SentimentCount.png)
 
+## St. Himark Resources
+#### Hospitals
+- Palace Hills 
+- OLD TOWN
+- Downtown Himark x2
+- Broadview neighborhood 
+- Terrapin Springs 
+- Southton
+#### Emergency Services
+- 34 fire stations 
+#### GAS:
+- If you smell gas, leave the area immediately and call our emergency service number
+#### Garbage
+- Residential collection is weekly. Commercial collection is weekly, but can be provided more frequently
+#### POWER
+- primarily supplied by the Always Safe Nuclear Power Plant (72%)
+- solar and wind providing 12% and 16% of the total supply
+- Old Town – we are working to modernize the electrical distribution system. Expect power outages lasting 30-60 minutes throughout the week. 
+- Southwest – repairs to the substation that supplies Southwest is causing intermittent power outages
+
 ## Choropleth Map
 #### Redirecting resources would also have to take into account the proximity from one neighborhood to another. We would have to determine where the resources would come from to save travel time in the real world
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/map_names.png)
