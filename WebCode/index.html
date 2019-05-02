@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style>
-      path {
-        fill: #ccc;
-        stroke: #fff;
-        stroke-width: .5px;
-      }
-      path:hover {
-        fill: orange;
-      }
-      body {
-        text-align: center;
-      }
-      div.tooltip { 
-          position: absolute;     
-          text-align: center;     
-          width: 80px;          
-          height: 14px;         
-          padding: 2px;       
-          font: 12px sans-serif;    
-          background: #fff; 
-          border: 0px;        
-          pointer-events: none;     
-      }
+        path {
+            fill: #ccc;
+            stroke: #fff;
+            stroke-width: .5px;
+        }
+        path:hover {
+            fill: orange;
+        }
+        body {
+            text-align: center;
+        }
+        div.tooltip {
+            position: absolute;
+            text-align: center;
+            width: 170px; /*changed width*/
+            height: 56px; /*changed height*/
+            padding: 2px;
+            font: 12px sans-serif;
+            background: #fff;
+            border: 0;
+            pointer-events: none;
+        }
     </style>
-  </head>
-  <body>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="//d3js.org/topojson.v1.min.js"></script>
-    <script>
+</head>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script>
     var width = 600,
         height = 500;
 
@@ -47,42 +47,135 @@
 
     var url = "https://raw.githubusercontent.com/HXDU/Project-3-Mini-Challenge-3/master/WebCode/StHimark.topojson";
 
-    var tooltip = d3.select("body").append("div") 
-        .attr("class", "tooltip")       
+    var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
         .style("opacity", 0);
 
+
+    // d3.csv("Broadview.csv", function(data){
+    //     totalSumArr(data);
+    //
+    //
+    //
+    // });
+    //
+    // function totalSumArr(data){
+    //     var totalSum = [d3.sum(data.map(function(d){ return d.Neg})),
+    //         d3.sum(data.map(function(d){ return d.Neu})),
+    //         d3.sum(data.map(function(d){ return d.Pos}))];
+    //
+    //     console.log(totalSum);
+    //     return totalSum;
+    //
+    // }
+
+    var dataset;
+
+    //let file = "Broadview.csv";
+    // d3.csv("Broadview.csv", function(data){
+    //     dataset=data;
+    // });
+    // setTimeout(function(){
+    //     console.log(dataset);
+    // },200);
+
+    function createDataset(file){
+
+        d3.csv(file, function(data){
+            dataset=data;
+        });
+        setTimeout(function(){
+            console.log(dataset);
+        },200);
+    }
+
+
     d3.json(url, function(error, topology) {
-      if (error) throw error;
+        if (error) throw error;
 
-      var geojson = topojson.feature(topology, topology.objects.StHimark);
 
-      var b = path.bounds(geojson),
-          s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-          t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
-      projection
-          .scale(s)
-          .translate(t);
+        var geojson = topojson.feature(topology, topology.objects.StHimark);
 
-      svg.selectAll("path")
-          .data(geojson.features)
-        .enter().append("path")
-          .attr("d", path)
-          .on("mouseover", function(d) {    
-            tooltip.transition()    
-            .duration(200)    
-            .style("opacity", .9);    
-            tooltip.html(d.properties.Nbrhood)  
-            .style("left", (d3.event.pageX) + "px")   
-            .style("top", (d3.event.pageY - 28) + "px");  
-          })          
-          .on("mouseout", function(d) {   
-            tooltip.transition()    
-            .duration(500)    
-            .style("opacity", 0); 
-          });
+        var b = path.bounds(geojson),
+            s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+            t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+
+        projection
+            .scale(s)
+            .translate(t);
+
+        svg.selectAll("path")
+            .data(geojson.features)
+            .enter().append("path")
+            .attr("d", path)
+            .on("mouseover", function(d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+
+                let dict = {};
+                dict["Broadview"] = [883, 914, 405];
+                dict["Chapparal"] = [474,540,218];
+
+
+                let csvArray = ["Broadview", "Chapparal"];
+//                 for (let i = 0; i < csvArray.length; i++){
+//                     let file = csvArray[i]+".csv";
+//                     createDataset(file);
+//                     let negVal = 0;
+//                     for (let i = 0; i < dataset.length; i++){
+//                         negVal = negVal + +dataset[i]["Neg"];
+//                     }
+//                     let neuVal = 0;
+//                     for (let i = 0; i < dataset.length; i++){
+//                         neuVal = neuVal + +dataset[i]["Neu"];
+//                     }
+//                     let posVal = 0;
+//                     for (let i = 0; i < dataset.length; i++){
+//                         posVal = posVal + +dataset[i]["Pos"];
+//                     }
+//                     dict[csvArray[i]] = [posVal, neuVal, negVal ]; //create a dict with all of them
+//
+//                 }
+
+                // function addDict(file){
+                //     let csvFile = file+".csv";
+                //     createDataset(csvFile);
+                //     let negVal = 0;
+                //     for (let i = 0; i < dataset.length; i++){
+                //         negVal = negVal + +dataset[i]["Neg"];
+                //     }
+                //     let neuVal = 0;
+                //     for (let i = 0; i < dataset.length; i++){
+                //         neuVal = neuVal + +dataset[i]["Neu"];
+                //     }
+                //     let posVal = 0;
+                //     for (let i = 0; i < dataset.length; i++){
+                //         posVal = posVal + +dataset[i]["Pos"];
+                //     }
+                //     let finalArray = [posVal, neuVal, negVal ];
+                //     dict[file] = finalArray;
+                //
+                // }
+
+
+
+                tooltip.html("Neighborhood: " + d.properties.Nbrhood +
+                        "<br>" + "Pos: " + dict[d.properties.Nbrhood][0] + //somehow this shit works
+                        "<br>" + " Neu:  " + dict[d.properties.Nbrhood][1] +
+                        "<br>" + "Neg: " + dict[d.properties.Nbrhood][2]) //edit the tooltip here
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function(d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
 
     });
-    </script>
-  </body>
+
+</script>
+</body>
 </html>
