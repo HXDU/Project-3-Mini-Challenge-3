@@ -62,6 +62,11 @@ A line graph of the sentiment count of the whole city:
 
 ### 3. Resources-related keywords identification  
 To use LDA topic modeling on all data to identify possible resources or needs. Examples: water, food, repair, school, fire, etc.   
+Resources group and its related keywords:
+Fire: fire, smoke, burn. 
+Power: gas, electricity, power.
+People: volunteers, animals, pets.
+Medic: medic, hospital, ambulance.
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/topicEarthquake.png)
 
 
