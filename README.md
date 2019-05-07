@@ -60,6 +60,10 @@ To visualize the sentimental changes of published messages over time, we cut the
 A line graph of the sentiment count of the whole city:
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/SentimentCount.png)
 
+### 3. Resources Identifying  
+To use LDA topic modeling on all data to identify possible resources or needs. 
+
+
 ## St. Himark Resources
 #### Hospitals
 - Palace Hills 
