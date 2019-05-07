@@ -60,7 +60,7 @@ To visualize the sentimental changes of published messages over time, we cut the
 A line graph of the sentiment count of the whole city:
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/SentimentCount.png)
 
-### 3. Resources Identifying  
+### 3. Resources-related keywords identification  
 To use LDA topic modeling on all data to identify possible resources or needs. Examples: water, food, repair, school, fire, etc.   
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/topicEarthquake.png)
 
