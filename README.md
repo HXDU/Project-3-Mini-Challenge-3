@@ -60,15 +60,16 @@ To visualize the sentimental changes of published messages over time, we cut the
 A line graph of the sentiment count of the whole city:
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/SentimentCount.png)
 
-### 3. Resources-related keywords identification  
+### 3. Resources-related keywords identification & resourcesByHrByLoc
 To use LDA topic modeling on all data to identify possible resources or needs. Examples: water, food, repair, school, fire, etc.   
 Based on the current resources of the city and LDA topic filtering, resources group and its related keywords:  
-Fire: fire, smoke, burn, firefighter 
+Fire: fire, smoke, burn, firefighter.   
 Power: gas, electricity, power.  
-People: volunteers, animals, pets, traffic 
-Medic: medic, hospital, hurt. 
+People: volunteers, animals, pets, traffic.   
+Medic: medic, hospital, hurt.   
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/topicEarthquake.png)
 
+We assume that the importance of one resource is porpotional to the number of its keywords being mentioned. Therefore, we calculate the count of each group keywords by hour and by location. One message may mention one or more resources, we do not limit one message to one possible resource only. 
 
 ## St. Himark Resources
 #### Hospitals
