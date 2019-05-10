@@ -142,15 +142,15 @@
                     if (dict[d.properties.Nbrhood][2] >= 50)
                         return "0.9";
                     else if (dict[d.properties.Nbrhood][2] >= 40)
-                        return "0.8";
-                    else if(dict[d.properties.Nbrhood][2] >= 30)
                         return "0.7";
-                    else if(dict[d.properties.Nbrhood][2] >= 20)
+                    else if(dict[d.properties.Nbrhood][2] >= 30)
                         return "0.6";
-                    else if(dict[d.properties.Nbrhood][2] >= 10)
+                    else if(dict[d.properties.Nbrhood][2] >= 20)
                         return "0.5";
-                    else if(dict[d.properties.Nbrhood][2] >= 0)
+                    else if(dict[d.properties.Nbrhood][2] >= 10)
                         return "0.4";
+                    else if(dict[d.properties.Nbrhood][2] >= 0)
+                        return "0.3";
                 }
 
                 svg.selectAll("path")
