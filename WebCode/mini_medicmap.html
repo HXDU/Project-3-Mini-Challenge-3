@@ -141,15 +141,15 @@
             if (dict[d.properties.Nbrhood][1] >= 50)
                 return "0.9";
             else if (dict[d.properties.Nbrhood][1] >=40)
-                return "0.8";
-            else if(dict[d.properties.Nbrhood][1] >= 30)
                 return "0.7";
-            else if(dict[d.properties.Nbrhood][1] >= 20)
+            else if(dict[d.properties.Nbrhood][1] >= 30)
                 return "0.6";
-            else if(dict[d.properties.Nbrhood][1] >= 10)
+            else if(dict[d.properties.Nbrhood][1] >= 20)
                 return "0.5";
-            else if(dict[d.properties.Nbrhood][1] >= 0)
+            else if(dict[d.properties.Nbrhood][1] >= 10)
                 return "0.4";
+            else if(dict[d.properties.Nbrhood][1] >= 0)
+                return "0.3";
         }
         svg.selectAll("path")
             .data(geojson.features)
@@ -158,30 +158,30 @@
             .style("opacity", function(d){
                 return colorChange(d)
             })
-            .style("fill", "red")
+            .style("fill", "red").on("mouseover", function(d) {
+                    parent.miniOver(d.properties.Nbrhood)
+                })
+                    .on("mouseout", function(d) {
+                    parent.miniOut()
 
-            .on("mouseover", function(d) {
+                });
+    });
 
+    function tool(N_Name) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
+                tooltip.html("<H2 style=' margin-top: 5px; margin-bottom: -5px;'>" + N_Name + "</H2>"+
+                    "<br>" + "Posts about <b>Wellbeing</b>: " + dict[N_Name][1])
+                    .style("left", "6px")
+                    .style("bottom", "6px");
+            }
 
-                tooltip.html("<H2 style=' margin-top: 5px; margin-bottom: -5px;'>" + d.properties.Nbrhood + "</H2>"+
-                    "<br>" + "<b>Details: </b>" +
-                    "<br>Luxury condominiums <br>Gated housing <br>Private beaches <br>Waterfront" +
-                    "<br><br>" + "<b>Buildings: </b>" +
-                    "<br>Hospital<br>School" + "<br><br>"+
-                    "<br>" + "Medic: " + dict[d.properties.Nbrhood][1] )
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function(d) {
+            function stopTool() {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            });
-    });
-
+            }
 
 </script>
 </body>
