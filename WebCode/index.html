@@ -17,9 +17,17 @@
             }
 
         </style>
+        
+        <script src="//mbostock.github.com/d3/d3.v2.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
 
         <script src="//d3js.org/d3.v3.min.js"></script>
         <script src="//d3js.org/topojson.v1.min.js"></script>
+        <script src="//code.jquery.com/jquery-latest.min.js"></script>
+
 
     </head>
 
@@ -47,14 +55,32 @@
     <body>
 
         <section class="container">
-            <div width="500" height="400" style="display: inline-block;"> 
+            <div width="400" height="300" style="display: inline-block;"> 
                 <iframe id="serviceFrameSend" src="map.html" width="500" height="400"  frameborder="0" scrolling="no"> </iframe>
             </div>
 
             <div style="display: inline-block;" id="figure" style="margin-bottom: 50px; margin-left: -20px;">
             </div>
+            
+            <br>
+            <br>
+            <div width="300" height="300" style="display: inline-block;"> 
+                 <iframe  id="minimap1" src="mini_medicmap.html" width="300" height="300"  frameborder="0" scrolling="no"> </iframe>
+            </div>
+            <div width="300" height="300" style="display: inline-block;"> 
+                 <iframe  id="minimap2"  src="mini_powermap.html" width="300" height="300"  frameborder="0" scrolling="no"> </iframe>
+            </div>
+            <div width="300" height="300" style="display: inline-block;"> 
+                 <iframe  id="minimap3"  src="mini_firemap.html" width="300" height="300"  frameborder="0" scrolling="no"> </iframe>
+            </div>
+            <div width="300" height="300" style="display: inline-block;"> 
+                 <iframe  id="minimap4"  src="mini_peoplemap.html" width="300" height="300"  frameborder="0" scrolling="no"> </iframe>
+            </div>
+            
+            
         </section>
-
+        
+        
         <div style="text-align:center;"> 
             <br><br>
             <select id="inds">
@@ -64,6 +90,7 @@
                 <option value="30">30 Hours After</option>
             </select>
         </div>
+        
 
         <script>
 
@@ -79,7 +106,7 @@
             .rangeRound([0, width]);
 
             var color = d3.scale.ordinal()
-            .range(["#f6a580","#ffffff",  "#cccccc",  "#ffffff","#92c6db"]);
+            .range(["#f0624d","#ffffff",  "#cccccc",  "#ffffff","#7de537"]);
 
             var xAxis = d3.svg.axis()
             .scale(x)
@@ -218,6 +245,28 @@
 
             });
 
+            function StateClicked(name) {
+                //alert("yaha") 
+            }
+
+            function ClearStates() {
+
+            }
+
+            function miniOver(n_name) {
+                document.getElementById("minimap1").contentWindow.tool(n_name)
+                document.getElementById("minimap2").contentWindow.tool(n_name)
+//                document.getElementById("minimap3").contentWindow.tool(n_name)
+                document.getElementById("minimap4").contentWindow.tool(n_name)
+                
+            }
+            function miniOut() {
+                
+                document.getElementById("minimap1").contentWindow.stopTool()
+                document.getElementById("minimap2").contentWindow.stopTool()
+//                document.getElementById("minimap3").contentWindow.stopTool()
+                document.getElementById("minimap4").contentWindow.stopTool()
+            }
 
         </script>
 
