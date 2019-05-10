@@ -2,35 +2,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style>
-            path {
-                fill: #ccc;
-                stroke: #fff;
-                stroke-width: .5px;
-            }
-            path:hover {
-                fill: orange;
-            }
-            body {
-                text-align: center;
-            }
-            div.tooltip {
-                position: absolute;
-                text-align: center;
-                width: 160px; /*changed width*/
-                height: 170px; /*changed height*/
-                padding: 2px;
-                font: 12px sans-serif;
-                background: #fff;
-                border: 0;
-                pointer-events: none;
-                text-align: left;
-            }
-        </style>
+        
     </head>
     <body>
         <script src="//d3js.org/d3.v3.min.js"></script>
         <script src="//d3js.org/topojson.v1.min.js"></script>
+        <link rel="stylesheet" href="mapstyles.css">
         <script>
             var width = 500,
                 height = 400;
@@ -53,45 +30,60 @@
             .attr("style","box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);text-align: center;")
             .style("opacity", 0);
 
+            let csvArray = ["Broadview", "Chapparal", "Cheddarford", "Downtown", "Easton", "EastParton", "Northwest",
+                "OakWillow", "OldTown", "PalaceHills", "PepperMill", "SafeTown", "ScenicVista", "Southton", "Southwest",
+                "TerrapinSprings", "Weston", "WestParton", "WilsonForest"];
 
-            // d3.csv("Broadview.csv", function(data){
-            //     totalSumArr(data);
-            //
-            //
-            //
-            // });
-            //
-            // function totalSumArr(data){
-            //     var totalSum = [d3.sum(data.map(function(d){ return d.Neg})),
-            //         d3.sum(data.map(function(d){ return d.Neu})),
-            //         d3.sum(data.map(function(d){ return d.Pos}))];
-            //
-            //     console.log(totalSum);
-            //     return totalSum;
-            //
-            // }
+            for (let i = 0; i < csvArray.length; i++){
+        let csvfile = "SentiByHourByLoc/"+csvArray[i]+".csv";
+        d3.csv(csvfile, function(data){
+            allSentArr(data);
 
-            var dataset;
+        });
 
-            //let file = "Broadview.csv";
-            // d3.csv("Broadview.csv", function(data){
-            //     dataset=data;
-            // });
-            // setTimeout(function(){
-            //     console.log(dataset);
-            // },200);
+        function allSentArr(data){
+            var sentArr = [d3.sum(data.map(function(d){ return d.Pos})),
+                d3.sum(data.map(function(d){ return d.Neu})),
+                d3.sum(data.map(function(d){ return d.Neg}))];
 
-            function createDataset(file){
+            //console.log(sentArr);
+            return sentArr;
 
-                d3.csv(file, function(data){
-                    dataset=data;
-                });
-                setTimeout(function(){
-                    console.log(dataset);
-                },200);
             }
+        }
 
+        let dict = {};
+        dict["Broadview"] = [883, 914, 405];
+        dict["Chapparal"] = [474, 540, 218];
+        dict["Cheddarford"] = [647, 509, 243];
+        dict["Downtown"] = [853, 1005, 496];
+        dict["Easton"] = [418, 419, 179];
+        dict["East Parton"] = [401, 377, 159];
+        dict["Northwest"] =[1036, 1216, 516];
+        dict["Oak Willow"] =[647, 509, 243];
+        dict["Old Town"] = [853, 1005, 469];
+        dict["Palace Hills"] =[847, 1116, 433];
+        dict["Pepper Mill"] = [373, 378, 155];
+        dict["Safe Town"] = [677, 489, 275];
+        dict["Scenic Vista"] = [1031, 1071, 491];
+        dict["Southton"] = [1603, 1593, 788];
+        dict["Southwest"] = [1349, 1400, 620];
+        dict["Terrapin Springs"] = [740, 788, 304];
+        dict["Weston"] = [1803, 1937, 899];
+        dict["West Parton"] = [773, 787, 349];
+        dict["Wilson Forest"] = [18, 17, 13];
 
+        var dataset;    
+
+        function createDataset(file){
+            d3.csv(file, function(data){
+                dataset=data;
+            });
+            setTimeout(function(){
+                console.log(dataset);
+            },200);
+        }
+            
             d3.json(url, function(error, topology) {
                 if (error) throw error;
 
@@ -105,77 +97,104 @@
                     .scale(s)
                     .translate(t);
 
+            function colorChange(d){
+                if (d.properties.Nbrhood === "Broadview"){
+                    return nbrColor(d,dict["Broadview"]);
+                }
+                else if (d.properties.Nbrhood ==="Chapparal"){
+                    return nbrColor(d,dict["Chapparal"]);
+                }
+                else if (d.properties.Nbrhood ==="Cheddarford"){
+                    return nbrColor(d,dict["Cheddarford"]);
+                }
+                else if (d.properties.Nbrhood ==="Downtown"){
+                    return nbrColor(d,dict["Downtown"]);
+                }
+                else if (d.properties.Nbrhood ==="Easton"){
+                    return nbrColor(d,dict["Easton"]);
+                }
+                else if (d.properties.Nbrhood ==="East Parton"){
+                    return nbrColor(d,dict["East Parton"]);
+                }
+                else if (d.properties.Nbrhood ==="Northwest"){
+                    return nbrColor(d,dict["Northwest"]);
+                }
+                else if (d.properties.Nbrhood ==="Oak Willow"){
+                    return nbrColor(d,dict["Oak Willow"]);
+                }
+                else if (d.properties.Nbrhood ==="Old Town"){
+                    return nbrColor(d,dict["Old Town"]);
+                }
+                else if (d.properties.Nbrhood ==="Palace Hills"){
+                    return nbrColor(d,dict["Palace Hills"]);
+                }
+                else if (d.properties.Nbrhood ==="Pepper Mill"){
+                    return nbrColor(d,dict["Pepper Mill"]);
+                }
+                else if (d.properties.Nbrhood ==="Safe Town"){
+                    return nbrColor(d,dict["Safe Town"]);
+                }
+                else if (d.properties.Nbrhood ==="Scenic Vista"){
+                    return nbrColor(d,dict["Scenic Vista"]);
+                }
+                else if (d.properties.Nbrhood ==="Southton"){
+                    return nbrColor(d,dict["Southton"]);
+                }
+                else if (d.properties.Nbrhood ==="Southwest"){
+                    return nbrColor(d,dict["Southwest"]);
+                }
+                else if (d.properties.Nbrhood ==="Terrapin Springs"){
+                    return nbrColor(d,dict["Terrapin Springs"]);
+                }
+                else if (d.properties.Nbrhood ==="Weston"){
+                    return nbrColor(d,dict["Weston"]);
+                }
+                else if (d.properties.Nbrhood ==="West Parton"){
+                    return nbrColor(d,dict["West Parton"]);
+                }
+                else if (d.properties.Nbrhood ==="Wilson Forest"){
+                    return nbrColor(d,dict["Wilson Forest"]);
+                }
+
+                else return "blue"
+                }
+                
+                function nbrColor(d, arr){
+                    let m = Math.max.apply(Math, arr);
+                    if (dict[d.properties.Nbrhood].indexOf(m) === 0)
+                        return "gray";
+                    else if (dict[d.properties.Nbrhood].indexOf(m) === 1)
+                        return "green";
+                    else if(dict[d.properties.Nbrhood].indexOf(m) === 2)
+                        return "red";
+                }
+                
                 svg.selectAll("path")
                     .data(geojson.features)
                     .enter().append("path")
                     .attr("d", path)
+                    .style("opacity", .7)
+                    .style("fill", function(d){
+                        return colorChange(d)
+                      })
+                
                     .on("mouseover", function(d) {
+                    
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9);
 
-                    let dict = {};
-                    dict["Broadview"] = [883, 914, 405];
-                    dict["Chapparal"] = [474,540,218];
-
-
-                    let csvArray = ["Broadview", "Chapparal"];
-                    //                 for (let i = 0; i < csvArray.length; i++){
-                    //                     let file = csvArray[i]+".csv";
-                    //                     createDataset(file);
-                    //                     let negVal = 0;
-                    //                     for (let i = 0; i < dataset.length; i++){
-                    //                         negVal = negVal + +dataset[i]["Neg"];
-                    //                     }
-                    //                     let neuVal = 0;
-                    //                     for (let i = 0; i < dataset.length; i++){
-                    //                         neuVal = neuVal + +dataset[i]["Neu"];
-                    //                     }
-                    //                     let posVal = 0;
-                    //                     for (let i = 0; i < dataset.length; i++){
-                    //                         posVal = posVal + +dataset[i]["Pos"];
-                    //                     }
-                    //                     dict[csvArray[i]] = [posVal, neuVal, negVal ]; //create a dict with all of them
-                    //
-                    //                 }
-
-                    // function addDict(file){
-                    //     let csvFile = file+".csv";
-                    //     createDataset(csvFile);
-                    //     let negVal = 0;
-                    //     for (let i = 0; i < dataset.length; i++){
-                    //         negVal = negVal + +dataset[i]["Neg"];
-                    //     }
-                    //     let neuVal = 0;
-                    //     for (let i = 0; i < dataset.length; i++){
-                    //         neuVal = neuVal + +dataset[i]["Neu"];
-                    //     }
-                    //     let posVal = 0;
-                    //     for (let i = 0; i < dataset.length; i++){
-                    //         posVal = posVal + +dataset[i]["Pos"];
-                    //     }
-                    //     let finalArray = [posVal, neuVal, negVal ];
-                    //     dict[file] = finalArray;
-                    //
-                    // }
-
-
-
-                    //                tooltip.html("Neighborhood: " + d.properties.Nbrhood +
-                    //                        "<br>" + "Pos: " + dict[d.properties.Nbrhood][0] + //somehow this shit works
-                    //                        "<br>" + " Neu:  " + dict[d.properties.Nbrhood][1] +
-                    //                        "<br>" + "Neg: " + dict[d.properties.Nbrhood][2]) //edit the tooltip here
-                    //                    .style("left", (d3.event.pageX) + "px")
-                    //                    .style("top", (d3.event.pageY - 28) + "px");
-
-                    tooltip.html("<H2 style=' margin-top: 5px; margin-bottom: -5px;'>" + d.properties.Nbrhood + "</H2>"
-                                 + "<br>" + "<b>Details: </b>" 
-                                 + "<br>Luxury condominiums <br>Gated housing <br>Private beaches <br>Waterfront"
-                                 + "<br><br>" + "<b>Buildings: </b>" 
-                                 + "<br>Hospital<br>School")
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px");
-                })
+                    tooltip.html("<H2 style=' margin-top: 5px; margin-bottom: -5px;'>" + d.properties.Nbrhood + "</H2>"+
+                        "<br>" + "<b>Details: </b>" +
+                        "<br>Luxury condominiums <br>Gated housing <br>Private beaches <br>Waterfront" +
+                        "<br><br>" + "<b>Buildings: </b>" +
+                        "<br>Hospital<br>School" + "<br><br><b>Sentiment: </b>"+
+                        "<br>" + "Pos: " + dict[d.properties.Nbrhood][0] +
+                        "<br>" + "Neu: " + dict[d.properties.Nbrhood][1] +
+                        "<br>" + "Neg: " + dict[d.properties.Nbrhood][2] )
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px");
+                    })
                     .on("mouseout", function(d) {
                     tooltip.transition()
                         .duration(500)
