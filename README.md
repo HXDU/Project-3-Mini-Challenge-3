@@ -71,6 +71,10 @@ Medic: medic, hospital, hurt.
 
 We assume that the importance of one resource is porpotional to the number of its keywords being mentioned. Therefore, we calculate the count of each group keywords by hour and by location. One message may mention one or more resources, we do not limit one message to one possible resource only. 
 
+### 4. How static data effects our data analysis
+First, response speed. To train a LDA topic modeling takes time, so does cross-check with data. Streaming data will slow down the response time. If we were to use the same method for streaming data, it will be necessary to decide on some critical time stamps.    
+Second, the overview. Static data provides a better overview of situations during the whole period and over time.    
+
 ## St. Himark Resources
 #### Hospitals
 - Palace Hills 
