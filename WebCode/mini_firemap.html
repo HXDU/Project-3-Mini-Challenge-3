@@ -34,8 +34,9 @@
             let csvArray = ["Broadview", "Chapparal", "Cheddarford", "Downtown", "Easton", "EastParton", "Northwest",
                             "OakWillow", "OldTown", "PalaceHills", "PepperMill", "SafeTown", "ScenicVista", "Southton", "Southwest",
                             "TerrapinSprings", "Weston", "WestParton", "WilsonForest"];
+            
             for (let i = 0; i < csvArray.length; i++){
-                let csvfile = "resourcesByHrByLoc/"+csvArray[i]+".csv";
+                let csvfile = "res/"+csvArray[i]+".csv";
                 d3.csv(csvfile, function(data){
                     console.log(csvArray[i]);
                     allSentArr(data);
@@ -65,6 +66,7 @@
                     console.log(dataset);
                 },200);
             }
+            
             d3.json(url, function(error, topology) {
                 if (error) throw error;
                 var geojson = topojson.feature(topology, topology.objects.StHimark);
@@ -157,18 +159,18 @@
                     .enter().append("path")
                     .attr("d", path)
                     .style("opacity", function(d){
-                        return colorChange(d)
-                    })
+                    return colorChange(d)
+                })
                     .style("fill", "orange").on("mouseover", function(d) {
                     parent.miniOver(d.properties.Nbrhood)
                 })
                     .on("mouseout", function(d) {
-                        parent.miniOut()
-                    });
+                    parent.miniOut()
+                });
             });
 
-                
-                function tool(N_Name) {
+
+            function tool(N_Name) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);

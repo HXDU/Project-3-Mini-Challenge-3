@@ -35,7 +35,7 @@
         "OakWillow", "OldTown", "PalaceHills", "PepperMill", "SafeTown", "ScenicVista", "Southton", "Southwest",
         "TerrapinSprings", "Weston", "WestParton", "WilsonForest"];
     for (let i = 0; i < csvArray.length; i++){
-        let csvfile = "resourcesByHrByLoc/"+csvArray[i]+".csv";
+        let csvfile = "res/"+csvArray[i]+".csv";
         d3.csv(csvfile, function(data){
             console.log(csvArray[i]);
             allSentArr(data);

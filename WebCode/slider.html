@@ -1,36 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-        <title>Simple Line Graph using SVG and d3.js</title>
-        <script src="http://mbostock.github.com/d3/d3.v2.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+<meta charset="utf-8" />
+<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+<title>d3-simple-slider</title>
 
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
 
-    </head>
-    <body>
+<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+      />
 
-        <div id="slider-range" style="width: 80%px; margin-left:10%; margin-right:10%"></div>
+<div class="container">
+    
+    <div class="align-items-center">
+        <div style="text-align: center" id="slider-range"></div>
+        <h4 id="value-range"style="text-align: center;display: none"></h4>
+        
+        
+        <div style="text-align: center" >
+        
+            <span><small>A: Start of the Data <b>(April 6, 12am)</b></small></span><br>
+        <span><small>B: Earthquake <b>(Apr 6th, 2pm)</b></small></span><br>
+        <span><small>C: 5 Hours After Earthqyake <b>(Apr 6th, 7am)</b></small></span><br>
+        <span><small>D: 30 Hours After Earthqyake <b>(Apr 7th, 8pm)</b></small></span><br>
+        <span><small>E: End of the Data <b>(Apr 10th, 11am)</b></small></span><br>
+            </div>
+    </div>
+    <div class="align-items-center">
 
-        <script>
+    </div>
+</div>
 
-            var a = [0,1000]
-            $(function() {
-                $( "#slider-range" ).slider({
-                    range: true,
-                    min: 0,
-                    max: 1000,
-                    values: [ 0, 1000 ],
-                    slide: function( event, ui ) {
-                        a = [ ui.values[0],ui.values[1] ]
-                    }
-                });
-            });
+<script>
+    // Simple
+    var data = [0, 107];
+    
+    var d = ["4/6 12AM","4/6 1AM","4/6 2AM","4/6 3AM","4/6 4AM","4/6 5AM","4/6 6AM","4/6 7AM","4/6 8AM","4/6 9AM","4/6 10AM","4/6 11AM","4/6 12PM","4/6 1PM","4/6 2PM","4/6 3PM","4/6 4PM","4/6 5PM","4/6 6PM","4/6 7PM","4/6 8PM","4/6 9PM","4/6 10PM","4/6 11PM","4/7 12AM","4/7 1AM","4/7 2AM","4/7 3AM","4/7 4AM","4/7 5AM","4/7 6AM","4/7 7AM","4/7 8AM","4/7 9AM","4/7 10AM","4/7 11AM","4/7 12PM","4/7 1PM","4/7 2PM","4/7 3PM","4/7 4PM","4/7 5PM","4/7 6PM","4/7 7PM","4/7 8PM","4/7 9PM","4/7 10PM","4/7 11PM","4/8 12AM","4/8 1AM","4/8 2AM","4/8 3AM","4/8 4AM","4/8 5AM","4/8 6AM","4/8 7AM","4/8 8AM","4/8 9AM","4/8 10AM","4/8 11AM","4/8 12PM","4/8 1PM","4/8 2PM","4/8 3PM","4/8 4PM","4/8 5PM","4/8 6PM","4/8 7PM","4/8 8PM","4/8 9PM","4/8 10PM","4/8 11PM","4/9 12AM","4/9 1AM","4/9 2AM","4/9 3AM","4/9 4AM","4/9 5AM","4/9 6AM","4/9 7AM","4/9 8AM","4/9 9AM","4/9 10AM","4/9 11AM","4/9 12PM","4/9 1PM","4/9 2PM","4/9 3PM","4/9 4PM","4/9 5PM","4/9 6PM","4/9 7PM","4/9 8PM","4/9 9PM","4/9 10PM","4/9 11PM","4/10 12AM","4/10 1AM","4/10 2AM","4/10 3AM","4/10 4AM","4/10 5AM","4/10 6AM","4/10 7AM","4/10 8AM","4/10 9AM","4/10 10AM","4/10 11AM"]
 
-        </script>
+    function yee(day,hour) {
+        var a = day + 6
 
-        <button onclick="alert(a)">Aye</button>
-    </body>
-</html>
+        if (hour > 12) {
+            if (hour == 12 ) {
+                hour = hour + 12 
+            }
+            var q = hour-12
+            return "April "+a+", " + q + "pm"
+        } else {
+            if (hour == 0 ) {
+                hour = hour + 12 
+            }
+            return "April " +a+", " + hour + "am"
+        }
+
+    }
+
+    function dd(d) {
+        if (d == 0) {
+            return "A"
+        }
+        if (d == 14) {
+            return "B"
+        }
+        if (d == 19) {
+            return "C"
+        }
+        if (d == 44) {
+            return "D"
+        }
+        if (d == 107) {
+            return "E"
+        }
+        if (d == 0 || d == 14 || d == 19 || d == 44 || d == 107) {
+            //14 Apr, 2pm
+            return yee(parseInt(d/24),d%24)
+        } else {
+            return ""
+        }
+    }
+
+    // Range
+    var sliderRange = d3
+    .sliderBottom()
+    .min(d3.min(data))
+    .max(d3.max(data))
+    .width(500)
+    .tickFormat(d => dd(d))
+    .ticks(107)
+    .default([0, 107])
+    .fill('#2196f3')
+    .on('onchange', val => {
+        val[0] = parseInt(val[0])
+        val[1] = parseInt(val[1])
+        var b = "Range: " +  yee(parseInt(val[0]/24),val[0]%24) + " - "+ yee(parseInt(val[1]/24),val[1]%24)
+        d3.select('#value-range').html(b);
+    });
+
+    var gRange = d3
+    .select('div#slider-range')
+    .append('svg')
+    .attr('width', 600)
+    .attr('height', 80)
+    .append('g')
+    .attr('transform', 'translate(30,30)');
+
+    gRange.call(sliderRange);
+
+    var b = "Range: " + yee(parseInt(0/24),0%24) + " - "+ yee(parseInt(107/24),107%24)
+    d3.select('#value-range').html(b);
+
+</script>
+<style> 
+
+html,body {
+                background-color: #F2F3F4;
+                font-family: Helvetica;
+            }
+</style>
+    </html>
