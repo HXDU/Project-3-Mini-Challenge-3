@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <title>Simple Line Graph using SVG and d3.js</title>
+        <script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+
+    </head>
+    <body>
+
+        <div id="slider-range" style="width: 80%px; margin-left:10%; margin-right:10%"></div>
+
+        <script>
+
+            var a = [0,1000]
+            $(function() {
+                $( "#slider-range" ).slider({
+                    range: true,
+                    min: 0,
+                    max: 1000,
+                    values: [ 0, 1000 ],
+                    slide: function( event, ui ) {
+                        a = [ ui.values[0],ui.values[1] ]
+                    }
+                });
+            });
+
+        </script>
+
+        <button onclick="alert(a)">Aye</button>
+    </body>
+</html>

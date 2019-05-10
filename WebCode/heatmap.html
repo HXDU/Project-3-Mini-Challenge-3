@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <body>
+        <h3>No Neighborhood selected, showing headmap for All Neighboohoods</h3>
+        <!-- Create a div where the graph will take place -->
+        <div id="my_dataviz"></div>
+    </body>
+
+    <script>
+
+        // set the dimensions and margins of the graph
+        var margin = {top: 20, right: 20, bottom: 20, left: 60},
+            width = 1000 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
+
+        // append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+
+        // Labels of row and columns
+        var myGroups = ["4/6 12AM","4/6 1AM","4/6 2AM","4/6 3AM","4/6 4AM","4/6 5AM","4/6 6AM","4/6 7AM","4/6 8AM","4/6 9AM","4/6 10AM","4/6 11AM","4/6 12PM","4/6 1PM","4/6 2PM","4/6 3PM","4/6 4PM","4/6 5PM","4/6 6PM","4/6 7PM","4/6 8PM","4/6 9PM","4/6 10PM","4/6 11PM","4/7 12AM","4/7 1AM","4/7 2AM","4/7 3AM","4/7 4AM","4/7 5AM","4/7 6AM","4/7 7AM","4/7 8AM","4/7 9AM","4/7 10AM","4/7 11AM","4/7 12PM","4/7 1PM","4/7 2PM","4/7 3PM","4/7 4PM","4/7 5PM","4/7 6PM","4/7 7PM","4/7 8PM","4/7 9PM","4/7 10PM","4/7 11PM","4/8 12AM","4/8 1AM","4/8 2AM","4/8 3AM","4/8 4AM","4/8 5AM","4/8 6AM","4/8 7AM","4/8 8AM","4/8 9AM","4/8 10AM","4/8 11AM","4/8 12PM","4/8 1PM","4/8 2PM","4/8 3PM","4/8 4PM","4/8 5PM","4/8 6PM","4/8 7PM","4/8 8PM","4/8 9PM","4/8 10PM","4/8 11PM","4/9 12AM","4/9 1AM","4/9 2AM","4/9 3AM","4/9 4AM","4/9 5AM","4/9 6AM","4/9 7AM","4/9 8AM","4/9 9AM","4/9 10AM","4/9 11AM","4/9 12PM","4/9 1PM","4/9 2PM","4/9 3PM","4/9 4PM","4/9 5PM","4/9 6PM","4/9 7PM","4/9 8PM","4/9 9PM","4/9 10PM","4/9 11PM","4/10 12AM","4/10 1AM","4/10 2AM","4/10 3AM","4/10 4AM","4/10 5AM","4/10 6AM","4/10 7AM","4/10 8AM","4/10 9AM","4/10 10AM","4/10 11AM"]
+        var myVars = ["Fire", "Medic", "People", "Power"]
+
+        // Build X scales and axis:
+        var x = d3.scaleBand()
+        .range([ 0, width ])
+        .domain(myGroups)
+        .padding(0.01);
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).ticks(5))
+
+        // Build X scales and axis:
+        var y = d3.scaleBand()
+        .range([ height, 0 ])
+        .domain(myVars)
+        .padding(0.01);
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // Build color scale
+        var myColor = d3.scaleLinear()
+        .range(["white", "#69b3a2"])
+        .domain([1,50])
+
+        //Read the data
+        d3.csv("heat.csv", function(data) {
+
+            // create a tooltip
+            var tooltip = d3.select("#my_dataviz")
+            .append("div")
+            .style("opacity", 0)
+            .attr("class", "tooltip")
+            .style("background-color", "white")
+            .style("border", "solid")
+            .style("border-width", "2px")
+            .style("border-radius", "5px")
+            .style("padding", "5px")
+
+            // Three function that change the tooltip when user hover / move / leave a cell
+            var mouseover = function(d) {
+                tooltip.style("opacity", 1)
+            }
+            var mousemove = function(d) {
+                tooltip
+                    .html("The exact value of<br>this cell is: " + d.value)
+                    .style("left", (d3.mouse(this)[0]+70) + "px")
+                    .style("top", (d3.mouse(this)[1]) + "px")
+            }
+            var mouseleave = function(d) {
+                tooltip.style("opacity", 0)
+            }
+
+            // add the squares
+            svg.selectAll()
+                .data(data, function(d) {return d.group+':'+d.variable;})
+                .enter()
+                .append("rect")
+                .attr("x", function(d) { return x(d.group) })
+                .attr("y", function(d) { return y(d.variable) })
+                .attr("width", x.bandwidth() )
+                .attr("height", y.bandwidth() )
+                .style("fill", function(d) { return myColor(d.value)} )
+                .on("mouseover", mouseover)
+                .on("mousemove", mousemove)
+                .on("mouseleave", mouseleave)
+        })
+
+    </script>
+</html>

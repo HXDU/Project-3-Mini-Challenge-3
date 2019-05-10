@@ -32,8 +32,8 @@
         <script src="//d3js.org/d3.v3.min.js"></script>
         <script src="//d3js.org/topojson.v1.min.js"></script>
         <script>
-            var width = 500,
-                height = 400;
+            var width = 400,
+                height = 300;
 
             var projection = d3.geo.mercator()
             .scale(1)
@@ -91,7 +91,8 @@
                 },200);
             }
 
-
+            var last = d3.select(null);;
+            var L = ""
             d3.json(url, function(error, topology) {
                 if (error) throw error;
 
@@ -180,7 +181,21 @@
                     tooltip.transition()
                         .duration(500)
                         .style("opacity", 0);
-                });
+                }).on("click", function(d) {
+                    
+                    if (d["properties"]["Nbrhood"] == L) {
+                        last.style("fill", "#ccc");
+                        parent.ClearStates()
+                    } else {
+                        last.style("fill", "#ccc");
+                        last = d3.select(this);
+                        L = d["properties"]["Nbrhood"]
+                        last.style("fill", "#4e4e4e");
+                        parent.StateClicked(d["properties"]["Nbrhood"])
+                    }
+
+                    
+                })
 
             });
 
