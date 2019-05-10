@@ -59,14 +59,16 @@
         }
         * {font-family: 'Oswald', sans-serif !important; }
     </style>
+    
     <body>
 
         <h1 style="text-align: center;font-size: 25px"> VAST Mini-Challenge 3: Voice from the People</h1>
-
-        <h2 style="text-align: center;width:1000px;margin:auto"> 
-            1.Using visual analytics, characterize conditions across the city and recommend how resources should be allocated at 5 hours and 30 hours after the earthquake. Include evidence from the data to support these recommendations. Consider how to allocate resources such as road crews, sewer repair crews, power, and rescue teams
+        <br>
+        <h2 style="text-align: center;width:1000px;margin:auto;font-weight:400"> 
+            Part 1) Using visual analytics, characterize conditions across the city and recommend how resources should be allocated at 5 hours and 30 hours after the earthquake. Include evidence from the data to support these recommendations. Consider how to allocate resources such as road crews, sewer repair crews, power, and rescue teams
         </h2>
 
+        <!-- Mini Maps-->
         <div style="width:1250px; margin:auto">
 
             <div width="300" height="300" style="display: inline-block;"> 
@@ -90,37 +92,20 @@
                 <h2 style="text-align: center">People</h2>
             </div>
         </div>
-
             <iframe style="margin:auto;display:block;"src="slider.html" width="960px" height="250px"  frameborder="0" scrolling="no"> </iframe>
-
         <br><br>
-        <h3> 
-            2.Identify at least 3 times when conditions change in a way that warrants a re-allocation of city resources. What were the conditions before and after the inflection point? What locations were affected? 
-        </h3>
-        <br><br>
-        <h3> 
-            3.Take the pulse of the community. How has the earthquake affect life in St. Himark? What is the community experiencing outside the realm of the first two questions? Show decision makers summary information and relevant/characteristic examples.
-        </h3>
-        <br><br>
-        <h3> 
-            4.The data for this challenge can be analyzed either as a static collection or as a dynamic stream of data, as it would occur in a real emergency. 
-        </h3>
-
-        <section class="container">
-            <div width="400" height="300" style="display: inline-block;"> 
-                <iframe id="serviceFrameSend" src="map.html" width="500" height="400"  frameborder="0" scrolling="no"> </iframe>
-            </div>
-
-            <div style="display: inline-block;" id="figure" style="margin-bottom: 50px; margin-left: -20px;">
-            </div>
-
-
-
-        </section>
-
-
+        <h2 style="text-align: center;width:1000px;margin:auto;font-weight:400"> 
+            Part 2) Identify at least 3 times when conditions change in a way that warrants a re-allocation of city resources. What were the conditions before and after the inflection point? What locations were affected? 
+        </h2>
+        
+        <br>
+        
+        <h2 style="text-align: center;width:1000px;margin:auto;font-weight:400"> 
+            Part 3) Take the pulse of the community. How has the earthquake affect life in St. Himark? What is the community experiencing outside the realm of the first two questions? Show decision makers summary information and relevant/characteristic examples.
+        </h2>
+        
         <div style="text-align:center;"> 
-            <br><br>
+            <br>
             <select id="inds">
                 <option value="apples" selected="selected">Pre-Earthquake</option>
                 <option value="pears">Post - Earthquake</option>
@@ -128,8 +113,20 @@
                 <option value="30">30 Hours After</option>
             </select>
         </div>
-
-
+        
+        <section class="container">
+            <div width="400" height="300" style="display: inline-block;"> 
+                <iframe id="serviceFrameSend" src="map.html" width="500" height="400"  frameborder="0" scrolling="no"> </iframe>
+            </div>
+            <div style="display: inline-block;" id="figure" style="margin-bottom: 50px; margin-left: -20px;">
+            </div>
+        </section>
+        
+        <br>
+        <h2 style="text-align: center;width:1000px;margin:auto;font-weight:400"> 
+            Part 4) Describe how you analyzed the data - as a static collection or a stream. How do you think this choice affected your analysis? 
+        </h2>
+        
         <script>
 
             var margin = {top: 50, right: 20, bottom: 10, left: 120},
