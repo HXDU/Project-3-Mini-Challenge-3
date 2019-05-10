@@ -15,8 +15,8 @@
         return Math.max.apply(null, this);
     };
 
-    var width = 500,
-        height = 400;
+    var width = 300,
+        height = 300;
     var projection = d3.geo.mercator()
         .scale(1)
         .translate([0, 0]);
@@ -139,19 +139,17 @@
         }
 
         function nbrColor(d, arr){
-            if (dict[d.properties.Nbrhood][0] >= 250)
+            if (dict[d.properties.Nbrhood][0] >= 50)
                 return "0.9";
-            else if (dict[d.properties.Nbrhood][0] >=200)
+            else if (dict[d.properties.Nbrhood][0] >=40)
                 return "0.8";
-            else if(dict[d.properties.Nbrhood][0] >= 150)
+            else if(dict[d.properties.Nbrhood][0] >= 30)
                 return "0.7";
-            else if(dict[d.properties.Nbrhood][0] >= 100)
+            else if(dict[d.properties.Nbrhood][0] >= 20)
                 return "0.6";
-            else if(dict[d.properties.Nbrhood][0] >= 50)
+            else if(dict[d.properties.Nbrhood][0] >= 10)
                 return "0.5";
-            else if(dict[d.properties.Nbrhood][0] >= 0)
-                return "0.4";
-        }
+            else if(dict[d.properties.Nbrhood][0] >= 0)       
         svg.selectAll("path")
             .data(geojson.features)
             .enter().append("path")

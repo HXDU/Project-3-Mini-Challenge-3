@@ -15,8 +15,8 @@
         return Math.max.apply(null, this);
     };
 
-    var width = 500,
-        height = 400;
+    var width = 300,
+        height = 300;
     var projection = d3.geo.mercator()
         .scale(1)
         .translate([0, 0]);
@@ -138,15 +138,15 @@
         }
 
         function nbrColor(d, arr){
-            if (dict[d.properties.Nbrhood][1] >= 250)
+            if (dict[d.properties.Nbrhood][1] >= 50)
                 return "0.9";
-            else if (dict[d.properties.Nbrhood][1] >=200)
+            else if (dict[d.properties.Nbrhood][1] >=40)
                 return "0.8";
-            else if(dict[d.properties.Nbrhood][1] >= 150)
+            else if(dict[d.properties.Nbrhood][1] >= 30)
                 return "0.7";
-            else if(dict[d.properties.Nbrhood][1] >= 100)
+            else if(dict[d.properties.Nbrhood][1] >= 20)
                 return "0.6";
-            else if(dict[d.properties.Nbrhood][1] >= 50)
+            else if(dict[d.properties.Nbrhood][1] >= 10)
                 return "0.5";
             else if(dict[d.properties.Nbrhood][1] >= 0)
                 return "0.4";
