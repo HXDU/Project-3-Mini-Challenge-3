@@ -143,22 +143,19 @@
                 }
 
                 function nbrColor(d, arr){
-                    let m = Math.max.apply(Math, arr);
-                    if (dict[d.properties.Nbrhood].indexOf(m) === 0)
-                        return "gray";
-                    else if (dict[d.properties.Nbrhood].indexOf(m) === 1)
-                        return "green";
-                    else if(dict[d.properties.Nbrhood].indexOf(m) === 2)
-                        return "red";
-                }
+                    let sum = arr[0]+arr[1]+arr[2];
+
+                    return sum/5000;
+                 }
                 
                 svg.selectAll("path")
                     .data(geojson.features)
                     .enter().append("path")
                     .attr("d", path).style("opacity", .7)
-                    .style("fill", function(d){
+                    style("opacity", function(d){
                         return colorChange(d)
-                    }).attr("id", function(d) { return d.properties.Nbrhood })
+                        })
+                       .style("fill", "black")
                     .on("mouseover", function(d) {
                     tooltip.transition()
                         .duration(200)
