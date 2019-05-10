@@ -8,6 +8,11 @@
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
 <link rel="stylesheet" href="mapstyles.css">
+    <style>
+        div.tooltip {
+    height: 90px;
+}
+    </style>
 <script>
     var width = 500,
         height = 400;
@@ -75,6 +80,7 @@
 
     var dataset;
 
+    
     function createDataset(file){
         d3.csv(file, function(data){
             dataset=data;
@@ -180,11 +186,10 @@
                     .duration(200)
                     .style("opacity", .9);
 
+        
+            var t =  dict[d.properties.Nbrhood][0] + dict[d.properties.Nbrhood][1] + dict[d.properties.Nbrhood][2]
                 tooltip.html("<H2 style=' margin-top: 5px; margin-bottom: -5px;'>" + d.properties.Nbrhood + "</H2>"+
-                    "<br>" + "<b>Details: </b>" +
-                    "<br>Luxury condominiums <br>Gated housing <br>Private beaches <br>Waterfront" +
-                    "<br><br>" + "<b>Buildings: </b>" +
-                    "<br>Hospital<br>School" + "<br><br><b>Sentiment: </b>"+
+                    "<br>" + "Total Posts: " + t +
                     "<br>" + "Pos: " + dict[d.properties.Nbrhood][0] +
                     "<br>" + "Neu: " + dict[d.properties.Nbrhood][1] +
                     "<br>" + "Neg: " + dict[d.properties.Nbrhood][2] )
