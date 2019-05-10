@@ -6,36 +6,7 @@
         
     </head>
     <body>
-        <style>
-            
-            path {
-                fill: #ccc;
-                stroke: #fff;
-                stroke-width: .5px;
-            }
-            path:hover {
-                fill: orange;
-            }
-            body {
-                text-align: center;
-            }
-            div.tooltip {
-                position: absolute;
-                text-align: center;
-                width: 160px; /*changed width*/
-                height: 170px; /*changed height*/
-                padding: 2px;
-                font: 12px sans-serif;
-                background: #fff;
-                border: 0;
-                pointer-events: none;
-                text-align: left;
-            }
-            body {
-                font-family: Verdana;
-            }
-            * {font-family: 'Oswald', sans-serif !important; }
-        </style>
+        <link rel="stylesheet" href="mapstyles.css">
         <script src="//d3js.org/d3.v3.min.js"></script>
         <script src="//d3js.org/topojson.v1.min.js"></script>
         <h2 style="text-align: center">St.Himark</h2>
@@ -60,34 +31,29 @@
             .attr("class", "tooltip")
             .attr("style","box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);text-align: center;")
             .style("opacity", 0);
-
-
-            // d3.csv("Broadview.csv", function(data){
-            //     totalSumArr(data);
-            //
-            //
-            //
-            // });
-            //
-            // function totalSumArr(data){
-            //     var totalSum = [d3.sum(data.map(function(d){ return d.Neg})),
-            //         d3.sum(data.map(function(d){ return d.Neu})),
-            //         d3.sum(data.map(function(d){ return d.Pos}))];
-            //
-            //     console.log(totalSum);
-            //     return totalSum;
-            //
-            // }
+            
+            let dict = {};
+            dict["Broadview"] = [883, 914, 405];
+            dict["Chapparal"] = [474, 540, 218];
+            dict["Cheddarford"] = [647, 509, 243];
+            dict["Downtown"] = [853, 1005, 496];
+            dict["Easton"] = [418, 419, 179];
+            dict["East Parton"] = [401, 377, 159];
+            dict["Northwest"] =[1036, 1216, 516];
+            dict["Oak Willow"] =[647, 509, 243];
+            dict["Old Town"] = [853, 1005, 469];
+            dict["Palace Hills"] =[847, 1116, 433];
+            dict["Pepper Mill"] = [373, 378, 155];
+            dict["Safe Town"] = [677, 489, 275];
+            dict["Scenic Vista"] = [1031, 1071, 491];
+            dict["Southton"] = [1603, 1593, 788];
+            dict["Southwest"] = [1349, 1400, 620];
+            dict["Terrapin Springs"] = [740, 788, 304];
+            dict["Weston"] = [1803, 1937, 899];
+            dict["West Parton"] = [773, 787, 349];
+            dict["Wilson Forest"] = [18, 17, 13];
 
             var dataset;
-
-            //let file = "Broadview.csv";
-            // d3.csv("Broadview.csv", function(data){
-            //     dataset=data;
-            // });
-            // setTimeout(function(){
-            //     console.log(dataset);
-            // },200);
 
             function createDataset(file){
 
@@ -113,22 +79,92 @@
                 projection
                     .scale(s)
                     .translate(t);
+                
+                function colorChange(d){
+                    if (d.properties.Nbrhood === "Broadview"){
+                        return nbrColor(d,dict["Broadview"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Chapparal"){
+                        return nbrColor(d,dict["Chapparal"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Cheddarford"){
+                        return nbrColor(d,dict["Cheddarford"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Downtown"){
+                        return nbrColor(d,dict["Downtown"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Easton"){
+                        return nbrColor(d,dict["Easton"]);
+                    }
+                    else if (d.properties.Nbrhood ==="East Parton"){
+                        return nbrColor(d,dict["East Parton"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Northwest"){
+                        return nbrColor(d,dict["Northwest"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Oak Willow"){
+                        return nbrColor(d,dict["Oak Willow"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Old Town"){
+                        return nbrColor(d,dict["Old Town"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Palace Hills"){
+                        return nbrColor(d,dict["Palace Hills"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Pepper Mill"){
+                        return nbrColor(d,dict["Pepper Mill"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Safe Town"){
+                        return nbrColor(d,dict["Safe Town"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Scenic Vista"){
+                        return nbrColor(d,dict["Scenic Vista"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Southton"){
+                        return nbrColor(d,dict["Southton"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Southwest"){
+                        return nbrColor(d,dict["Southwest"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Terrapin Springs"){
+                        return nbrColor(d,dict["Terrapin Springs"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Weston"){
+                        return nbrColor(d,dict["Weston"]);
+                    }
+                    else if (d.properties.Nbrhood ==="West Parton"){
+                        return nbrColor(d,dict["West Parton"]);
+                    }
+                    else if (d.properties.Nbrhood ==="Wilson Forest"){
+                        return nbrColor(d,dict["Wilson Forest"]);
+                    }
+
+                    else return "blue"
+                }
+
+                function nbrColor(d, arr){
+                    let m = Math.max.apply(Math, arr);
+                    if (dict[d.properties.Nbrhood].indexOf(m) === 0)
+                        return "gray";
+                    else if (dict[d.properties.Nbrhood].indexOf(m) === 1)
+                        return "green";
+                    else if(dict[d.properties.Nbrhood].indexOf(m) === 2)
+                        return "red";
+                }
+                
                 svg.selectAll("path")
                     .data(geojson.features)
                     .enter().append("path")
-                    .attr("d", path).attr("id", function(d) { return d.properties.Nbrhood })
+                    .attr("d", path).style("opacity", .7)
+                    .style("fill", function(d){
+                        return colorChange(d)
+                    }).attr("id", function(d) { return d.properties.Nbrhood })
                     .on("mouseover", function(d) {
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9);
 
-                    let dict = {};
-                    dict["Broadview"] = [883, 914, 405];
-                    dict["Chapparal"] = [474,540,218];
-
-
-                    let csvArray = ["Broadview", "Chapparal"];
-
+                
                     parent.miniOver(d.properties.Nbrhood)
                     
                     tooltip.html("<H2 style=' margin-top: 5px; margin-bottom: -5px;'>" + d.properties.Nbrhood + "</H2>"
