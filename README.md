@@ -24,9 +24,9 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 ## The Data
   - 41942 Rows
   - 4 Columns
-    - time (date/time the message was posted)
+    - time (Date/time the message was posted)
     - location (Which neighborhood the message was posted from)
-    - account (user handle of the person who posted the message)
+    - account (User handle of the person who posted the message)
     - message (The message itself)
     
 ### Example Data Entry
@@ -47,7 +47,7 @@ The City has been using Y*INT to communicate with its citizens, even post-earthq
 
 ## Files & Solutions  
 ### 1.EarthquakeKeyWordCount.csv  
-To identify the time when earthquake happens: key word search('quake','earthquake'). This csv file has the number of matched messages for each hour.    
+To identify the time when earthquake happens: keyword search('quake','earthquake'). This csv file has the number of matched messages for each hour.    
 Given a threshold of 20, we can identify the message peak time is:  
 - Apr,6: 2pm-4pm, 7pm-8pm  
 - Apr,8: 8am-10am, 1pm-2pm, 7pm-8pm    
@@ -78,7 +78,7 @@ Second, the overview. Static data provides a better overview of situations durin
 ## St. Himark Resources
 #### Hospitals
 - Palace Hills 
-- OLD TOWN
+- Old Town
 - Downtown Himark x2
 - Broadview neighborhood 
 - Terrapin Springs 
@@ -88,8 +88,10 @@ Second, the overview. Static data provides a better overview of situations durin
 #### WATER and SEWER
 Call our Emergency Service department if you need emergency service from the Water Department, including having your water shut off because of a broken pipe, observing a broken fire hydrant, or if your water service is off and you are not sure why.
 ##### Current Water and Sewer Projects:
-•	Old Town – old water supply lines are being replaced throughout the neighborhood. We apologize for any inconvenience for this very necessary repair work. 
+•	Old Town – old water supply lines are being replaced throughout the neighborhood. We apologize for any inconvenience for this very necessary repair work.
+<br>
 •	East Parton – a broken water main is currently being repaired at the intersection of Blair and Quealy.
+<br>
 •	West Parton – routine maintenance on the sewer lines is ongoing.
 
 #### GAS:
@@ -97,14 +99,16 @@ Call our Emergency Service department if you need emergency service from the Wat
 #### Garbage
 - Residential collection is weekly. Commercial collection is weekly, but can be provided more frequently
 #### POWER
-- primarily supplied by the Always Safe Nuclear Power Plant (72%)
-- solar and wind providing 12% and 16% of the total supply
+- Primarily supplied by the Always Safe Nuclear Power Plant (72%)
+- Solar and wind providing 12% and 16% of the total supply
 - Old Town – we are working to modernize the electrical distribution system. Expect power outages lasting 30-60 minutes throughout the week. 
 - Southwest – repairs to the substation that supplies Southwest is causing intermittent power outages
 
 ## Choropleth Map
 #### Redirecting resources would also have to take into account the proximity from one neighborhood to another. We would have to determine where the resources would come from to save travel time in the real world
 ![map](https://github.com/HXDU/Project-3-Mini-Challenge-3/blob/master/pics/map_names.png)
+
+Thank you to Jie Lie (Github: [Artlands](https://github.com/Artlands)) for allowing us to use the geojson [St.Himark map](https://gist.github.com/JsyTim/4f24941f4725789fe066467333e6346e).
 
 ## Team Contributions
 ### H Du
