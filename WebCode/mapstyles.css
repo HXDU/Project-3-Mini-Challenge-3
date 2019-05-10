@@ -1,0 +1,23 @@
+path {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: .5px;
+}
+path:hover {
+    fill-opacity:0.5;
+}
+body {
+    text-align: center;
+}
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 160px;
+    height: 250px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: #fff;
+    border: 0;
+    pointer-events: none;
+    text-align: left;
+}
