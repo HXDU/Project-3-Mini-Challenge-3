@@ -142,29 +142,30 @@
                     if (dict[d.properties.Nbrhood][0] >= 50)
                         return "0.9";
                     else if (dict[d.properties.Nbrhood][0] >=40)
-                        return "0.8";
-                    else if(dict[d.properties.Nbrhood][0] >= 30)
                         return "0.7";
-                    else if(dict[d.properties.Nbrhood][0] >= 20)
+                    else if(dict[d.properties.Nbrhood][0] >= 30)
                         return "0.6";
-                    else if(dict[d.properties.Nbrhood][0] >= 10)
+                    else if(dict[d.properties.Nbrhood][0] >= 20)
                         return "0.5";
-                    else if(dict[d.properties.Nbrhood][0] >= 0)       
-                        svg.selectAll("path")
-                            .data(geojson.features)
-                            .enter().append("path")
-                            .attr("d", path)
-                            .style("opacity", function(d){
-                            return colorChange(d)
-                        })
-                            .style("fill", "orange").on("mouseover", function(d) {
+                    else if(dict[d.properties.Nbrhood][0] >= 10)
+                        return "0.4";
+                    else if(dict[d.properties.Nbrhood][0] >= 0)
+                        return "0.3";
+                }
+                svg.selectAll("path")
+                    .data(geojson.features)
+                    .enter().append("path")
+                    .attr("d", path)
+                    .style("opacity", function(d){
+                        return colorChange(d)
+                    })
+                    .style("fill", "orange").on("mouseover", function(d) {
                     parent.miniOver(d.properties.Nbrhood)
                 })
                     .on("mouseout", function(d) {
-                    parent.miniOut()
-
-                });
-                });
+                        parent.miniOut()
+                    });
+            });
 
                 
                 function tool(N_Name) {
