@@ -193,8 +193,8 @@
                     "<br>" + "Pos: " + dict[d.properties.Nbrhood][0] +
                     "<br>" + "Neu: " + dict[d.properties.Nbrhood][1] +
                     "<br>" + "Neg: " + dict[d.properties.Nbrhood][2] )
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
+                    .style("left", "10px")
+                    .style("bottom", "10px");
             })
             .on("mouseout", function(d) {
                 tooltip.transition()
